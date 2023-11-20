@@ -5,6 +5,48 @@
     <title>CRM - Customer Registration</title>
 </head>
 <body>
-Rejestracja klienta
+<h3>CRM - Customer Registration</h3>
+
+<form method="post" action="/register/customer" id="customerForm" th:object="${customer}">
+
+    <label for="title">Tytuł</label>
+    <p><select id="title" th:field="*{title}">
+        <option th:value="Pan">Pan</option>
+        <option th:value="Pani">Pani</option>
+        <option th:value="Państwo">Państwo</option>
+        <option th:value="Firma">Firma</option>
+    </select></p>
+
+    <label for="name">Imię:</label>
+    <p><input id="name" type="text" th:field="*{name}"></p>
+
+    <label for="surname">Nazwisko:</label>
+    <p><input id="surname" type="text" th:field="*{surname}"></p>
+
+    <label for="phoneNumber">Numer kontaktowy:</label>
+    <p><input id="phoneNumber" type="text" placeholder="123 456 789" th:field="*{phoneNumber}"></p>
+
+    <label for="email">Email:</label>
+    <p><input id="email" type="email" placeholder="your@email.com" th:field="*{email}"></p>
+
+    <label for="city">Miejscowość:</label>
+    <p><input id="city" type="text" th:field="*{city}"></p>
+
+    <label for="postcode">Kod pocztowy:</label>
+    <p><input id="postcode" type="text" placeholder="XX-XXX" th:field="*{postCode}"></p>
+
+    <label for="note">Uwagi:</label>
+    <p><textarea rows="4" id="note" form="customerForm" th:field="*{notes}"></textarea></p>
+
+    <label for="trader">Handlowiec</label>
+    <p><select id="trader" form="customerForm">
+<!--        TODO zrobić pętle dla handlowców-->
+    </select> </p>
+
+    <button type="submit">Wyślij</button>
+    <button type="reset">Reset</button>
+
+
+</form>
 </body>
 </html>
