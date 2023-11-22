@@ -43,8 +43,8 @@
     <p class="error" th:if="${#fields.hasErrors('postCode')}" th:errors="*{postCode}"></p>
 
     <label for="note">Uwagi:</label>
-    <p><textarea rows="4" id="note" form="customerForm" th:field="*{notes}"></textarea></p>
-    <p class="error" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}"></p>
+    <p><textarea rows="4" id="note" form="customerForm" th:field="*{note}"></textarea></p>
+    <p class="error" th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
 
     <label for="trader">Handlowiec</label>
     <p><select id="trader" form="customerForm">

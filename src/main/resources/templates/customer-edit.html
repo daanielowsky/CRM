@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Customer Edit</title>
+    <style> td, th {
+        border: 1px solid black;
+    } </style>
+</head>
+<body>
+<table>
+    <thead>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Email</th>
+    <th>Numer telefonu</th>
+    <th>Kod pocztowy</th>
+    <th>Miasto</th>
+    <th>Notatka</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${customer.name}"/>
+        <td th:text="${customer.surname}"/>
+        <td th:text="${customer.email}"/>
+        <td th:text="${customer.phoneNumber}"/>
+        <td th:text="${customer.postCode}"/>
+        <td th:text="${customer.city}"/>
+        <td th:text="${customer.note}"/>
+    </tr>
+    <tr>
+        <form method="post" th:action="@{/customers/edit/{id}(id=${customer.id})}">
+            <td><input type="text" th:field="${customer.name}"></td>
+            <td><input type="text" th:field="${customer.surname}"></td>
+            <td><input type="text" th:field="${customer.email}"></td>
+            <td><input type="text" th:field="${customer.phoneNumber}"></td>
+            <td><input type="text" th:field="${customer.postCode}"></td>
+            <td><input type="text" th:field="${customer.city}"></td>
+            <td><input type="text" th:field="${customer.note}"></td>
+        </form>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

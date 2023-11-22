@@ -29,9 +29,9 @@ public class CustomerDTO {
     private String city;
 
     @NotBlank (message = "This field can not be empty")
-    @Pattern(regexp = "\\d{2}-\\{d}{3}", message = "Wrong format. Correct format is XX-XXX")
+    @Pattern(regexp = "\\d{2}-\\d{3}", message = "Wrong format. Correct format is XX-XXX")
     private String postCode;
 
-    private String notes;
+    private String note;
 
 }
