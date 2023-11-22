@@ -2,13 +2,12 @@ package com.daanielowsky.crm.Controllers;
 
 import com.daanielowsky.crm.DTO.CustomerDTO;
 import com.daanielowsky.crm.Services.RegistrationService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/register")
@@ -28,11 +27,15 @@ public class RegisterController {
     }
 
     @PostMapping("/customer")
-    public String registeringCustomer(@ModelAttribute("customer") CustomerDTO customerDTO) throws IllegalAccessException{
+    public String registeringCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult result) throws IllegalAccessException{
+
+        if (result.hasErrors()){
+            log.warn("There are " + result.getErrorCount() + " errors in registration form. Forwarding back to registration form.");
+            return "customer-registration";
+        }
 
         registrationService.registeringCustomer(registrationService.fieldsFromDtoToCustomerEntity(customerDTO));
 
-
-        return "homepage";
+        return "redirect:/";
     }
 }

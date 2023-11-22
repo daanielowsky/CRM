@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/style/style.css">
     <meta charset="UTF-8">
     <title>CRM - Customer Registration</title>
 </head>
@@ -19,24 +20,31 @@
 
     <label for="name">Imię:</label>
     <p><input id="name" type="text" th:field="*{name}"></p>
+    <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
     <label for="surname">Nazwisko:</label>
     <p><input id="surname" type="text" th:field="*{surname}"></p>
+    <p class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
 
     <label for="phoneNumber">Numer kontaktowy:</label>
     <p><input id="phoneNumber" type="text" placeholder="123 456 789" th:field="*{phoneNumber}"></p>
+    <p class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
 
     <label for="email">Email:</label>
     <p><input id="email" type="email" placeholder="your@email.com" th:field="*{email}"></p>
+    <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
     <label for="city">Miejscowość:</label>
     <p><input id="city" type="text" th:field="*{city}"></p>
+    <p class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
 
     <label for="postcode">Kod pocztowy:</label>
     <p><input id="postcode" type="text" placeholder="XX-XXX" th:field="*{postCode}"></p>
+    <p class="error" th:if="${#fields.hasErrors('postCode')}" th:errors="*{postCode}"></p>
 
     <label for="note">Uwagi:</label>
     <p><textarea rows="4" id="note" form="customerForm" th:field="*{notes}"></textarea></p>
+    <p class="error" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}"></p>
 
     <label for="trader">Handlowiec</label>
     <p><select id="trader" form="customerForm">
