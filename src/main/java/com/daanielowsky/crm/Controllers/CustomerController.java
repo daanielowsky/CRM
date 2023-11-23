@@ -56,9 +56,14 @@ public class CustomerController {
         customerRepository.save(customer1);
         log.info(customer1.toString());
 
-        //TODO zrobić to jakoś ładniej
-
-
         return "redirect:/customers";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable Long id){
+
+        customerService.deleteCustomer(id);
+        return "redirect:/customers";
+
     }
 }

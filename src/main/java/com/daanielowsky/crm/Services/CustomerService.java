@@ -53,4 +53,10 @@ public class CustomerService {
 
         return destination;
     }
+
+    public void deleteCustomer(Long id){
+        Optional<Customer> customerById = customerRepository.getCustomerById(id);
+        Customer customer = customerById.orElse(null);
+        customerRepository.delete(customer);
+    }
 }
