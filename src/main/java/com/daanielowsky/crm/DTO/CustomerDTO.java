@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class CustomerDTO {
 
-    @NotBlank(message = "This field can not be empty!")
     private String title;
 
     @NotBlank(message = "This field can not be empty!")

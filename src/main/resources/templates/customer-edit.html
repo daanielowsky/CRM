@@ -28,8 +28,8 @@
         <td th:text="${customer.city}"/>
         <td th:text="${customer.note}"/>
     </tr>
-    <tr>
-        <form method="post" th:action="@{/customers/edit/{id}(id=${customer.id})}">
+    <form method="post">
+        <tr>
             <td><input type="text" th:field="${customer.name}"></td>
             <td><input type="text" th:field="${customer.surname}"></td>
             <td><input type="text" th:field="${customer.email}"></td>
@@ -37,8 +37,9 @@
             <td><input type="text" th:field="${customer.postCode}"></td>
             <td><input type="text" th:field="${customer.city}"></td>
             <td><input type="text" th:field="${customer.note}"></td>
-        </form>
-    </tr>
+            <td><button type="submit">Wyślij</button> </td>
+        </tr>
+    </form>
     </tbody>
 </table>
 </body>

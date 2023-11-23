@@ -5,6 +5,7 @@ import com.daanielowsky.crm.Entities.Customer;
 import com.daanielowsky.crm.Repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
@@ -19,36 +20,10 @@ public class RegistrationService {
         this.customerRepository = customerRepository;
     }
 
-    @Transactional
-    public Customer fieldsFromDtoToCustomerEntity(CustomerDTO customerDTO) throws IllegalAccessException{
+    public void registeringCustomer(CustomerDTO customerDTO){
 
-        Customer customer = new Customer();
-
-        Class<?> source = customerDTO.getClass();
-        Class<?> destination = customer.getClass();
-
-        Field[] sourceFields = source.getDeclaredFields();
-        Field[] destinationFields = destination.getDeclaredFields();
-
-        for (Field sField : sourceFields) {
-            sField.setAccessible(true);
-
-            for (Field destField : destinationFields) {
-                if (sField.getName().equals(destField.getName()) && sField.getType().equals(destField.getType())){
-                    destField.setAccessible(true);
-                    destField.set(customer, sField.get(customerDTO));
-                    break;
-                }
-            }
-        }
-
-        log.info("Data transferred from DTO file to Customer");
-
-        return customer;
-    }
-
-
-    public void registeringCustomer(Customer customer){
+        ModelMapper modelMapper = new ModelMapper();
+        Customer customer = modelMapper.map(customerDTO, Customer.class);
 
         customerRepository.save(customer);
 
@@ -58,13 +33,8 @@ public class RegistrationService {
                 "\nEmail: " + customer.getEmail() +
                 "\nNumer Telefonu: " + customer.getPhoneNumber() +
                 "\nKod Pocztowy: " + customer.getPostCode() +
-                "\nMiejscowość: " + customer.getCity());
+                "\nMiejscowość: " + customer.getCity() +
+                "\nNotatka: " + customer.getNote());
 
     }
-
-
-
-
-
-
 }

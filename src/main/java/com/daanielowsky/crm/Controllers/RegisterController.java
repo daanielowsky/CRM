@@ -34,7 +34,7 @@ public class RegisterController {
             return "customer-registration";
         }
 
-        registrationService.registeringCustomer(registrationService.fieldsFromDtoToCustomerEntity(customerDTO));
+        registrationService.registeringCustomer(customerDTO);
 
         return "redirect:/";
     }
