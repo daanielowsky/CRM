@@ -63,5 +63,11 @@ public class ActivityController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteActivity(@PathVariable Long id){
+        activityService.deleteActivity(id);
+        return "redirect:/customers";
+    }
+
 
 }
