@@ -57,7 +57,11 @@ public class ActivityController {
         return "edit-activity";
     }
 
-    
+    @PostMapping("/edit/{id}")
+    public String editingActivity(@PathVariable("id") Long id, @ModelAttribute Activity activity){
+        activityService.editActivity(id, activity);
+        return "redirect:/customers";
+    }
 
 
 }

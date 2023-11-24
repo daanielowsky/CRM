@@ -24,7 +24,7 @@ public class ActivityService {
     }
 
     @Transactional
-    public void createActivity(Long id, Activity activity){
+    public void createActivity(Long id, Activity activity) {
         Optional<Customer> customerById = customerRepository.getCustomerById(id);
         Customer customer = customerById.orElse(null);
         activity.setCustomer(customer);
@@ -37,11 +37,15 @@ public class ActivityService {
         return activityRepository.getAllActivitiesConnectedWithCustomer(customer);
     }
 
-    public Activity getActivityForEdit(Long id){
+    public Activity getActivityForEdit(Long id) {
         return activityRepository.getActivityById(id);
     }
 
-    public void editActivity(Activity activity){
-        activityRepository.save(activity);
+    public void editActivity(Long id, Activity activity) {
+        Activity activityForEdit = getActivityForEdit(id);
+        activityForEdit.setMessage(activity.getMessage());
+        activityRepository.save(activityForEdit);
     }
+
+
 }
