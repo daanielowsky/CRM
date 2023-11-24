@@ -54,7 +54,6 @@ public class CustomerController {
 
         Customer customer1 = customerService.dataTransferFromDTOToEntity(customer, id);
         customerRepository.save(customer1);
-        log.info(customer1.toString());
 
         return "redirect:/customers";
     }

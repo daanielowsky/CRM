@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Activity Edit Panel</title>
+</head>
+<body>
+<form method="post" th:object="${activity}">
+    <table>
+        <thead>
+        <th th:text="Wiadomość" colspan="2"></th>
+        </thead>
+        <tbody>
+        <td><input type="text" th:field="${activity.message}" th:value="${activity.message}"></textarea></td>
+        </tbody>
+    </table>
+    <button type="submit" th:text="Wyślij"></button>
+</form>
+</body>
+</html>

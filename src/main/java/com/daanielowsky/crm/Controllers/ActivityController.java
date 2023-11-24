@@ -47,6 +47,17 @@ public class ActivityController {
         return "activities-of-customer";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editFormForActivity(@PathVariable("id") Long id, Model model){
+
+        Activity activity = activityService.getActivityForEdit(id);
+
+        model.addAttribute("activity", activity);
+
+        return "edit-activity";
+    }
+
+    
 
 
 }

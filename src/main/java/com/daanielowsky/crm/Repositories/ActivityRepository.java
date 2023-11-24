@@ -15,4 +15,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
     @Query("SELECT a FROM Activity a WHERE a.customer =:customer")
     List<Activity> getAllActivitiesConnectedWithCustomer(@Param("customer")Customer customer);
+
+    Activity getActivityById(Long id);
 }

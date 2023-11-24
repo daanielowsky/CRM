@@ -8,8 +8,6 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +35,13 @@ public class ActivityService {
         Optional<Customer> customerById = customerRepository.getCustomerById(id);
         Customer customer = customerById.orElse(null);
         return activityRepository.getAllActivitiesConnectedWithCustomer(customer);
+    }
+
+    public Activity getActivityForEdit(Long id){
+        return activityRepository.getActivityById(id);
+    }
+
+    public void editActivity(Activity activity){
+        activityRepository.save(activity);
     }
 }
