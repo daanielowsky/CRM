@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
@@ -13,7 +14,7 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime localDateTime;
+    private String localDateTime;
 
     private String message;
 
@@ -21,8 +22,10 @@ public class Activity {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public Activity(String message) {
-        this.localDateTime = LocalDateTime.now();
-        this.message = message;
+    @PrePersist
+    public void onCreate(){
+        this.localDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
+
+
 }

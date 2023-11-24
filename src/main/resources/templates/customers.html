@@ -21,6 +21,7 @@
     <th>Handlowiec</th>
     <th>Edytuj</th>
     <th>Usuń</th>
+    <th colspan="2">Aktywności</th>
     </thead>
     <tbody>
     <tr th:each="customer: ${customers}">
@@ -35,6 +36,8 @@
         <td th:text="${customer.employee}"/>
         <td><a th:href="@{/customers/edit/{id}(id=${customer.id})}" th:text="Edytuj"/></td>
         <td><a th:href="@{customers/delete/{id}(id=${customer.id})}" th:text="Usuń"/></td>
+        <td><a th:href="@{customers/activities/{id}(id=${customer.id})}" th:text="Podgląd"/></td>
+        <td><a th:href="@{customers/activities/add/{id}(id=${customer.id})}" th:text="Dodaj"/></td>
         <br>
     </tr>
     </tbody>

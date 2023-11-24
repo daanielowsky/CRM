@@ -6,6 +6,7 @@
     <style> td, th {
         border: 1px solid black;
     } </style>
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
 <table>
@@ -41,25 +42,25 @@
         </tr>
         <tr>
             <td>
-                <span th:if="${#fields.hasErrors('name')}" th:errors="${customer.name}"></span>
+                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="${customer.name}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('surname')}" th:errors="${customer.surname}"></span>
+                <span class="error" th:if="${#fields.hasErrors('surname')}" th:errors="${customer.surname}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('email')}" th:errors="${customer.email}"></span>
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="${customer.email}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="${customer.phoneNumber}"></span>
+                <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="${customer.phoneNumber}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('postCode')}" th:errors="${customer.postCode}"></span>
+                <span class="error" th:if="${#fields.hasErrors('postCode')}" th:errors="${customer.postCode}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('city')}" th:errors="${customer.city}"></span>
+                <span class="error" th:if="${#fields.hasErrors('city')}" th:errors="${customer.city}"></span>
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('note')}" th:errors="${customer.note}"></span>
+                <span class="error" th:if="${#fields.hasErrors('note')}" th:errors="${customer.note}"></span>
             </td>
         </tr>
     </form>

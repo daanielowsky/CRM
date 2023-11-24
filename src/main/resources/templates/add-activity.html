@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Add Activity</title>
+</head>
+<body>
+<form method="post" th:object="${activity}">
+  <h2>Dodaj aktywność</h2>
+  <textarea th:field="${activity.message}" rows="4" ></textarea>
+  <br>
+  <button type="submit" th:text="Wyślij"/>
+  <button type="reset" th:text="Reset"/>
+</form>
+</body>
+</html>

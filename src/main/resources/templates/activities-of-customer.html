@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Activities</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>Data powstania</th>
+    <th>Wiadomość</th>
+    </thead>
+    <tbody>
+    <tr th:each="activity: ${activities}">
+        <td th:text="${activity.localDateTime}"></td>
+        <td th:text="${activity.message}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
