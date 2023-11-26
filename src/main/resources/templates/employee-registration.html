@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Employee registration</title>
+</head>
+<body>
+<h3>CRM - Employee registration</h3>
+<form method="post" action="/register/employee" th:object="${employee}">
+    <label for="name">Imię: </label>
+    <p><input id=name type="text" th:field="*{name}"></p>
+
+    <label for="surname">Nazwisko: </label>
+    <p><input id=surname type="text" th:field="*{surname}"></p>
+
+    <label for="phoneNumber">Numer telefonu: </label>
+    <p><input id=phoneNumber type="text" th:field="*{phoneNumber}"></p>
+
+    <label for="email">Email: </label>
+    <p><input id=email type="text" th:field="*{email}"></p>
+
+    <label for="roles">Stanowisko: </label>
+    <p><select id=roles type="text" th:field="*{roles}">
+        <option value="" selected hidden="">Wybierz</option>
+        <option th:each="role: ${roles}" th:text="${role.name}" th:value="${role.name}"/>
+    </select></p>
+
+    <label for="salary">Pensja: </label>
+    <p><input id=salary type="text" th:field="*{salary}"></p>
+
+    <label for="dateOfBirth">Data urodzenia: </label>
+    <p><input id=dateOfBirth type="date" th:field="*{dateOfBirth}"></p>
+
+    <button type="submit">Wyślij</button>
+    <button type="reset">Reset</button>
+
+</form>
+</body>
+</html>

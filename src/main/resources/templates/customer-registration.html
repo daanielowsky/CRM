@@ -12,6 +12,7 @@
 
     <label for="title">Tytuł</label>
     <p><select id="title" th:field="*{title}">
+        <option value="" selected hidden="">Wybierz</option>
         <option th:value="Pan">Pan</option>
         <option th:value="Pani">Pani</option>
         <option th:value="Państwo">Państwo</option>
@@ -48,7 +49,8 @@
 
     <label for="trader">Handlowiec</label>
     <p><select id="trader" form="customerForm">
-<!--        TODO zrobić pętle dla handlowców-->
+        <option value="" selected hidden="">Wybierz</option>
+        <option th:each="employee: ${employees}" th:text="${employee.name} + ${employee.surname}">Wybierz</option>
     </select> </p>
 
     <button type="submit">Wyślij</button>

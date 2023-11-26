@@ -19,6 +19,7 @@
     <th>Miasto</th>
     <th>Notatka</th>
     <th>Handlowiec</th>
+    <th>Status</th>
     <th>Edytuj</th>
     <th>Usuń</th>
     <th colspan="2">Aktywności</th>
@@ -34,6 +35,7 @@
         <td th:text="${customer.city}"/>
         <td th:text="${customer.note}"/>
         <td th:text="${customer.employee}"/>
+        <td th:text="${customer.status}"/>
         <td><a th:href="@{/customers/edit/{id}(id=${customer.id})}" th:text="Edytuj"/></td>
         <td><a th:href="@{customers/delete/{id}(id=${customer.id})}" th:text="Usuń"/></td>
         <td><a th:href="@{customers/activities/{id}(id=${customer.id})}" th:text="Podgląd"/></td>

@@ -31,10 +31,13 @@ public class Customer {
 
     private String note;
 
+    private Status status;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Activity> activities = new LinkedList<>();
 
     @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
 }

@@ -1,13 +1,18 @@
 package com.daanielowsky.crm.Services;
 
 import com.daanielowsky.crm.DTO.CustomerDTO;
+import com.daanielowsky.crm.DTO.EmployeeDTO;
 import com.daanielowsky.crm.Entities.Activity;
 import com.daanielowsky.crm.Entities.Customer;
+import com.daanielowsky.crm.Entities.Employee;
+import com.daanielowsky.crm.Entities.Status;
 import com.daanielowsky.crm.Repositories.CustomerRepository;
+import com.daanielowsky.crm.Repositories.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.lang.reflect.Field;
 
@@ -18,15 +23,19 @@ public class RegistrationService {
     private CustomerRepository customerRepository;
     private ActivityService activityService;
 
-    public RegistrationService(CustomerRepository customerRepository, ActivityService activityService) {
+    private EmployeeRepository employeeRepository;
+
+    public RegistrationService(CustomerRepository customerRepository, ActivityService activityService, EmployeeRepository employeeRepository) {
         this.customerRepository = customerRepository;
         this.activityService = activityService;
+        this.employeeRepository = employeeRepository;
     }
 
     public void registeringCustomer(CustomerDTO customerDTO){
 
         ModelMapper modelMapper = new ModelMapper();
         Customer customer = modelMapper.map(customerDTO, Customer.class);
+        customer.setStatus(Status.NEW);
 
         customerRepository.save(customer);
         Activity activity = new Activity();
@@ -41,6 +50,16 @@ public class RegistrationService {
                 "\nKod Pocztowy: " + customer.getPostCode() +
                 "\nMiejscowość: " + customer.getCity() +
                 "\nNotatka: " + customer.getNote());
+
+    }
+
+    public void registeringEmployee (EmployeeDTO employeeDTO){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        Employee employee = modelMapper.map(employeeDTO, Employee.class);
+
+        employeeRepository.save(employee);
 
     }
 }
