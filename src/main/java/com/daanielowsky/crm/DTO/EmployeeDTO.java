@@ -1,6 +1,6 @@
 package com.daanielowsky.crm.DTO;
 
-import com.daanielowsky.crm.Entities.Roles;
+import com.daanielowsky.crm.Enums.Roles;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

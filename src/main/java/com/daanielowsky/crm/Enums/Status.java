@@ -1,4 +1,4 @@
-package com.daanielowsky.crm.Entities;
+package com.daanielowsky.crm.Enums;
 
 public enum Status {
 

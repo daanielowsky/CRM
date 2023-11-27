@@ -48,10 +48,12 @@
     <p class="error" th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
 
     <label for="trader">Handlowiec</label>
-    <p><select id="trader" form="customerForm">
+    <p><select id="trader" form="customerForm" th:field="*{employee}">
         <option value="" selected hidden="">Wybierz</option>
-        <option th:each="employee: ${employees}" th:text="${employee.name} + ${employee.surname}">Wybierz</option>
+        <option th:each="employee: ${employees}" th:text="${employee.name} + ' ' + ${employee.surname}" th:value="${employee.id}"></option>
     </select> </p>
+    <p class="error" th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"></p>
+
 
     <button type="submit">Wyślij</button>
     <button type="reset">Reset</button>

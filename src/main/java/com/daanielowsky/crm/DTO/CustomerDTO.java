@@ -1,5 +1,6 @@
 package com.daanielowsky.crm.DTO;
 
+import com.daanielowsky.crm.Entities.Employee;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,5 +34,8 @@ public class CustomerDTO {
     private String postCode;
 
     private String note;
+
+    @NotNull
+    private Employee employee;
 
 }

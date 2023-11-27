@@ -1,6 +1,7 @@
 package com.daanielowsky.crm.Entities;
 
 
+import com.daanielowsky.crm.Enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 

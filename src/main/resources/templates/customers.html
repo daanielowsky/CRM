@@ -34,7 +34,7 @@
         <td th:text="${customer.postCode}"/>
         <td th:text="${customer.city}"/>
         <td th:text="${customer.note}"/>
-        <td th:text="${customer.employee}"/>
+        <td th:text="${customer.employee.name} + ' ' + ${customer.employee.surname}"/>
         <td th:text="${customer.status}"/>
         <td><a th:href="@{/customers/edit/{id}(id=${customer.id})}" th:text="Edytuj"/></td>
         <td><a th:href="@{customers/delete/{id}(id=${customer.id})}" th:text="Usuń"/></td>

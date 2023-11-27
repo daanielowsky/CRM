@@ -1,5 +1,6 @@
 package com.daanielowsky.crm.Entities;
 
+import com.daanielowsky.crm.Enums.Roles;
 import jakarta.persistence.*;
 import lombok.Data;
 

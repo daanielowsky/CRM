@@ -2,6 +2,7 @@ package com.daanielowsky.crm.Services;
 
 import com.daanielowsky.crm.DTO.EmployeeDTO;
 import com.daanielowsky.crm.Entities.Employee;
+import com.daanielowsky.crm.Enums.Roles;
 import com.daanielowsky.crm.Repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> getAllEmployees(){
-        return employeeRepository.getAllBy();
+    public List<Employee> getSalesRepresentativeForCustomerRegistration(){
+        return employeeRepository.getAllByRoles(Roles.SALESREPRESENTATIVE);
     }
 
 }

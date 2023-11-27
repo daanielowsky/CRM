@@ -5,16 +5,14 @@ import com.daanielowsky.crm.DTO.EmployeeDTO;
 import com.daanielowsky.crm.Entities.Activity;
 import com.daanielowsky.crm.Entities.Customer;
 import com.daanielowsky.crm.Entities.Employee;
-import com.daanielowsky.crm.Entities.Status;
+import com.daanielowsky.crm.Enums.Status;
 import com.daanielowsky.crm.Repositories.CustomerRepository;
 import com.daanielowsky.crm.Repositories.EmployeeRepository;
-import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import java.lang.reflect.Field;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -36,6 +34,7 @@ public class RegistrationService {
         ModelMapper modelMapper = new ModelMapper();
         Customer customer = modelMapper.map(customerDTO, Customer.class);
         customer.setStatus(Status.NEW);
+
 
         customerRepository.save(customer);
         Activity activity = new Activity();
