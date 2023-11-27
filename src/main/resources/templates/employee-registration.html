@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>CRM - Employee registration</title>
+    <link rel="stylesheet" href="/style/style.css">
+
 </head>
 <body>
+<div th:insert="~{header :: header}"></div>
+
 <h3>CRM - Employee registration</h3>
 <form method="post" action="/register/employee" th:object="${employee}">
     <label for="name">Imię: </label>

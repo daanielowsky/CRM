@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>CRM - Add Activity</title>
+    <link rel="stylesheet" href="/style/style.css">
+
 </head>
 <body>
+<div th:insert="~{header :: header}"></div>
+
 <form method="post" th:object="${activity}">
   <h2>Dodaj aktywność</h2>
   <textarea th:field="${activity.message}" rows="4" ></textarea>
