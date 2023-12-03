@@ -65,7 +65,7 @@
 body{
     margin-left: 8%;
     margin-right: 8%;
-    background-color: lightblue;
+    background-color: lightcyan;
 }
 
 
@@ -86,6 +86,7 @@ td{
 }
 
 thead {
+
     background-color: black;
     color: white;
     font-family: Arial;

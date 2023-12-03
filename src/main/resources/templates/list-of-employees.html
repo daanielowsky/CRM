@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>CRM - List of employees</title>
-  <link rel="stylesheet" href="/style/style.css"/>
+    <link rel="stylesheet" href="/style/style.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    
 </head>
 <body>
 <div class="header" th:include="~{header :: header}"></div>
@@ -22,20 +24,20 @@
     <th colspan="2">Akcje</th>
     </thead>
     <tbody>
-        <tr th:each="employee: ${employees}">
-            <td th:text="${employee.id}"/>
-            <td th:text="${employee.name}"/>
-            <td th:text="${employee.surname}"/>
-            <td th:text="${employee.phoneNumber}"/>
-            <td th:text="${employee.email}"/>
-            <td th:text="${employee.roles}"/>
-            <td th:text="${employee.salary} + ' PLN'"/>
-            <td th:text="${employee.customerList.size()}"/>
-            <td th:text="${employee.dateOfBirth}"/>
-            <td th:text="${employee.dateOfEmployment}"/>
-            <td><a th:href="@{/employees/edit/{id}(id=${employee.id})}" th:text="Edytuj"/></td>
-            <td><a th:href="@{/employees/delete/{id}(id=${employee.id})}" th:text="Usuń"/></td>
-        </tr>
+    <tr th:each="employee: ${employees}">
+        <td th:text="${employee.id}"/>
+        <td th:text="${employee.name}"/>
+        <td th:text="${employee.surname}"/>
+        <td th:text="${employee.phoneNumber}"/>
+        <td th:text="${employee.email}"/>
+        <td th:text="${employee.roles}"/>
+        <td th:text="${employee.salary} + ' PLN'"/>
+        <td th:text="${employee.customerList.size()}"/>
+        <td th:text="${employee.dateOfBirth}"/>
+        <td th:text="${employee.dateOfEmployment}"/>
+        <td><a th:href="@{/employees/edit/{id}(id=${employee.id})}" th:text="Edytuj"/></td>
+        <td><a th:href="@{/employees/delete/{id}(id=${employee.id})}" th:text="Usuń"/></td>
+    </tr>
     </tbody>
 </table>
 </body>
