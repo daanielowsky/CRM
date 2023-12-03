@@ -24,9 +24,9 @@ public class ActivityService {
     }
 
     @Transactional
-    public void createActivity(Long id, Activity activity) {
-        Optional<Customer> customerById = customerRepository.getCustomerById(id);
-        Customer customer = customerById.orElse(null);
+    public void createActivity(Customer customer, Activity activity) {
+//        Optional<Customer> customerById = customerRepository.getCustomerById(id);
+//        Customer customer = customerById.orElse(null);
         activity.setCustomer(customer);
         activityRepository.save(activity);
     }

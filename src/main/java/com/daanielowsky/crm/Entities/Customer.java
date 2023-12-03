@@ -3,12 +3,16 @@ package com.daanielowsky.crm.Entities;
 
 import com.daanielowsky.crm.Enums.Status;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Customer {
 

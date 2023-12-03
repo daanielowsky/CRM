@@ -2,13 +2,17 @@ package com.daanielowsky.crm.Controllers;
 
 
 import com.daanielowsky.crm.Entities.Activity;
+import com.daanielowsky.crm.Entities.Customer;
+import com.daanielowsky.crm.Repositories.CustomerRepository;
 import com.daanielowsky.crm.Services.ActivityService;
+import com.daanielowsky.crm.Services.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @Slf4j
@@ -16,9 +20,13 @@ import java.util.List;
 public class ActivityController {
 
     private ActivityService activityService;
+    private CustomerService customerService;
+    private CustomerRepository customerRepository;
 
-    public ActivityController(ActivityService activityService) {
+    public ActivityController(ActivityService activityService, CustomerService customerService, CustomerRepository customerRepository) {
         this.activityService = activityService;
+        this.customerService = customerService;
+        this.customerRepository = customerRepository;
     }
 
     @GetMapping()
@@ -36,7 +44,12 @@ public class ActivityController {
     @PostMapping("/add/{id}")
     public String creatingActivity(@PathVariable Long id, @ModelAttribute ("activity") Activity activity){
 
-        activityService.createActivity(id, activity);
+        Optional<Customer> customerById = customerRepository.getCustomerById(id);
+        Customer customer = customerById.orElse(null);
+        activityService.createActivity(customer, activity);
+
+        //TODO zrobić to ładniej oraz żeby działało :)
+
         return "redirect:/customers";
     }
 

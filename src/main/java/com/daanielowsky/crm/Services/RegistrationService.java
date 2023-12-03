@@ -39,7 +39,7 @@ public class RegistrationService {
         customerRepository.save(customer);
         Activity activity = new Activity();
         activity.setMessage("Customer has been created.");
-        activityService.createActivity(customer.getId(), activity);
+        activityService.createActivity(customer, activity);
 
         log.info("Created new customer with ID: " + customer.getId() +
                 "\nImię: " + customer.getName() +

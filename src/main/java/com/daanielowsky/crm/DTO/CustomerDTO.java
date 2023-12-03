@@ -10,7 +10,8 @@ import lombok.Data;
 @Data
 public class CustomerDTO {
 
-    @NotBlank(message = "This field can not be empty!")
+//    @NotBlank(message = "This field can not be empty!")
+    // TODO ogarnąć to 
     private String title;
 
     @NotBlank(message = "This field can not be empty!")
@@ -35,7 +36,7 @@ public class CustomerDTO {
 
     private String note;
 
-    @NotNull
+//    @NotNull
     private Employee employee;
 
 }

@@ -3,24 +3,70 @@
 }
 
 .nav-bar{
-    display: flex;
-    padding: 8px;
-    background-color: darkgrey;
+    width: fit-content;
+    display: block;
+    padding: 16px 32px;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to top, grey 5%, darkgrey 100%);
+    font-family: Arial;
+    font-weight: bold;
+    color: black;
     float: left;
     border-radius: 10px;
     border-width: 2px;
     border-color: black;
     border-style: solid;
-    margin: 10px;
-    align-items: center;
+    margin-inline: 10px;
+    text-decoration: none;
+
 }
 
 .nav-bar:hover{
-    background-color: mediumseagreen;
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color:#408c99;
+}
+
+.nav-bar:active{
+    position: relative;
+    top:1px;
+}
+
+#header-image{
+    display: flex;
+    justify-content: center;
 }
 
 h3{
     margin-top: 100px;
 }
 
+.myButton {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:18px;
+    font-weight:bold;
+    padding:13px 32px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+
+.myButton:hover {
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color:#408c99;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+body{
+    margin-left: 8%;
+    margin-right: 8%;
+}
 

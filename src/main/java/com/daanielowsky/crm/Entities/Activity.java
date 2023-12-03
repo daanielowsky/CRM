@@ -1,12 +1,16 @@
 package com.daanielowsky.crm.Entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Activity {
 
