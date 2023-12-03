@@ -13,4 +13,6 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
 
     List<Employee> getAllByRoles(Roles roles);
     Optional<Employee> getEmployeeById(Long id);
+
+    List<Employee> getAllBy();
 }

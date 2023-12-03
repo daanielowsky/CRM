@@ -23,4 +23,7 @@ public class EmployeeService {
         return employeeRepository.getAllByRoles(Roles.SALESREPRESENTATIVE);
     }
 
+    public List<Employee> getListOfEmployees() {
+        return employeeRepository.getAllBy();
+    }
 }

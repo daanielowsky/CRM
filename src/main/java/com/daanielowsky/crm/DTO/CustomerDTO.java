@@ -11,7 +11,7 @@ import lombok.Data;
 public class CustomerDTO {
 
 //    @NotBlank(message = "This field can not be empty!")
-    // TODO ogarnąć to 
+    // TODO ogarnąć to
     private String title;
 
     @NotBlank(message = "This field can not be empty!")

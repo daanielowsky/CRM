@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - List of employees</title>
+  <link rel="stylesheet" href="/style/style.css"/>
+</head>
+<body>
+<div class="header" th:include="~{header :: header}"></div>
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Numer telefonu</th>
+    <th>Email</th>
+    <th>Rola</th>
+    <th>Pensja</th>
+    <th>Ilość klientów</th>
+    <th>Data urodzenia</th>
+    <th>Data zatrudnienia</th>
+    <th colspan="2">Akcje</th>
+    </thead>
+    <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.id}"/>
+            <td th:text="${employee.name}"/>
+            <td th:text="${employee.surname}"/>
+            <td th:text="${employee.phoneNumber}"/>
+            <td th:text="${employee.email}"/>
+            <td th:text="${employee.roles}"/>
+            <td th:text="${employee.salary}"/>
+            <td th:text="${employee.customerList.size()}"/>
+            <td th:text="${employee.dateOfBirth}"/>
+            <td th:text="${employee.dateOfEmployment}"/>
+            <td><a th:href="@{/employees/edit/{id}(id=${employee.id})}" th:text="Edytuj"/></td>
+            <td><a th:href="@{/employees/delete/{id}(id=${employee.id})}" th:text="Usuń"/></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
