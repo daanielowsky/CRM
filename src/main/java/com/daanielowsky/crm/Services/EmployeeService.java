@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -25,5 +26,11 @@ public class EmployeeService {
 
     public List<Employee> getListOfEmployees() {
         return employeeRepository.getAllBy();
+    }
+
+    public Employee getEmployeeById(Long id) {
+        Optional<Employee> employeeById = employeeRepository.getEmployeeById(id);
+        Employee employee = employeeById.orElse(null);
+        return employee;
     }
 }

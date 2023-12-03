@@ -34,10 +34,7 @@
 #header-image{
     display: flex;
     justify-content: center;
-}
-
-h3{
-    margin-top: 100px;
+    mix-blend-mode: color-burn;
 }
 
 .myButton {
@@ -68,6 +65,7 @@ h3{
 body{
     margin-left: 8%;
     margin-right: 8%;
+    background-color: lightblue;
 }
 
 
@@ -79,5 +77,37 @@ table {
 
 th, td {
     border: 1px solid black;
+    padding: 5px;
 }
 
+td{
+    text-decoration: none;
+    color: black;
+}
+
+thead {
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+input, textarea, select{
+    padding:10px;
+    border-width:1px;
+    border-color: black;
+    border-radius: 10px;
+}
+
+input:hover, textarea:hover, select:hover{
+    border-color: greenyellow;
+}

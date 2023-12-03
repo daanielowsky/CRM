@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM - Edit employee</title>
+    <link rel="stylesheet" href="/style/style.css"/>
+</head>
+<body>
+<div th:insert="~{header :: header}"/>
+<table>
+    <thead>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Numer telefonu</th>
+    <th>Email</th>
+    <th>Rola</th>
+    <th>Pensja</th>
+    <th>Akcje</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.surname}"></td>
+        <td th:text="${employee.phoneNumber}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.roles}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <form method="post" th:object="${employee}">
+            <td>
+                <input type="text" th:field="${employee.name}">
+            </td>
+            <td>
+                <input type="text" th:field="${employee.surname}">
+            </td>
+            <td>
+                <input type="text" th:field="${employee.phoneNumber}">
+            </td>
+            <td>
+                <input type="text" th:field="${employee.email}">
+            </td>
+            <td>
+                <select>
+                    <option th:each="roles : ${roles}" th:text="${roles}" th:value="${roles}" th:field="${employee.roles}"></option>
+                </select>
+            </td>
+            <td>
+                <input type="text" th:field="${employee.salary}">
+            </td>
+            <td>
+                <button class="myButton">Wyślij</button>
+            </td>
+        </form>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
