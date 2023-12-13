@@ -44,8 +44,8 @@
                 <input type="text" th:field="${employee.email}">
             </td>
             <td>
-                <select>
-                    <option th:each="roles : ${roles}" th:text="${roles}" th:value="${roles}" th:field="${employee.roles}"></option>
+                <select th:field="*{roles}">
+                    <option th:each="role : ${roles}"  th:text="${role}" th:value="${role.name()}"></option>
                 </select>
             </td>
             <td>

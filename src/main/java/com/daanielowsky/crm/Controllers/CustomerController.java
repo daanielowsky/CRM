@@ -46,10 +46,11 @@ public class CustomerController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editingCustomer(@PathVariable Long id, @Valid @ModelAttribute ("customer") CustomerDTO customer, BindingResult result) throws IllegalAccessException{
+    public String editingCustomer(@PathVariable Long id, @ModelAttribute ("customer") CustomerDTO customer, BindingResult result) throws IllegalAccessException{
         if (result.hasErrors()){
             log.warn("There are " + result.getErrorCount() + " errors in registration form. Forwarding back to edit panel.");
             return "customer-edit";
+//            TODO dodać walidacje
         }
 
         Customer customer1 = customerService.dataTransferFromDTOToEntity(customer, id);

@@ -31,12 +31,6 @@
     top:1px;
 }
 
-#header-image{
-    display: flex;
-    justify-content: center;
-    mix-blend-mode: color-burn;
-}
-
 .myButton {
     box-shadow: 0px 10px 14px -7px #276873;
     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
@@ -65,7 +59,11 @@
 body{
     margin-left: 8%;
     margin-right: 8%;
-    background-color: lightcyan;
+    margin-top: 6%;
+    background-image: url(../images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 
