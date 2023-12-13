@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+<div class="header" th:insert="~{header :: header}"></div>
+
+<h3>CRM - Rejestracja nowego produktu</h3>
+
+<form method="post" action="/register/item" id="customerForm" th:object="${item}">
+
+    <label for="producer">Producent</label>
+    <p><select id="producer" form="customerForm" th:field="*{producer}">
+        <option value="" selected hidden="">Wybierz</option>
+        <option th:each="producer: ${producers}" th:text="${producer}" th:value="${producer.name()}"></option>
+    </select> </p>
+    <p class="error" th:if="${#fields.hasErrors('producer')}" th:errors="*{producer}"></p>
+
+    <label for="name">Nazwa przedmiotu:</label>
+    <p><input id="name" type="text" th:field="*{name}"></p>
+    <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+    <label for="description">Opis:</label>
+    <p><input id="description" type="text" th:field="*{description}"></p>
+    <p class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+
+    <label for="descriptionForOffer">Opis na ofertę:</label>
+    <p><textarea rows="5" id="descriptionForOffer" form="customerForm" th:field="*{descriptionForOffer}"></textarea></p>
+    <p class="error" th:if="${#fields.hasErrors('descriptionForOffer')}" th:errors="*{descriptionForOffer}"></p>
+
+    <label for="price">Cena produktu:</label>
+    <p><input id="price" th:field="*{price}"></p>
+    <p class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+
+    <label for="quantity">Ilość na stanie:</label>
+    <p><input id="quantity" type="number" th:field="*{quantityOnStock}"></p>
+    <p class="error" th:if="${#fields.hasErrors('quantityOnStock')}" th:errors="*{quantityOnStock}"></p>
+
+
+
+    <button class="myButton" type="submit">Wyślij</button>
+    <button class="myButton" type="reset">Reset</button>
+</form>
+</body>
+</html>

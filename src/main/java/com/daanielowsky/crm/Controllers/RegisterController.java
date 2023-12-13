@@ -2,7 +2,9 @@ package com.daanielowsky.crm.Controllers;
 
 import com.daanielowsky.crm.DTO.CustomerDTO;
 import com.daanielowsky.crm.DTO.EmployeeDTO;
+import com.daanielowsky.crm.DTO.ItemDTO;
 import com.daanielowsky.crm.Entities.Employee;
+import com.daanielowsky.crm.Enums.Producers;
 import com.daanielowsky.crm.Enums.Roles;
 import com.daanielowsky.crm.Services.EmployeeService;
 import com.daanielowsky.crm.Services.RegistrationService;
@@ -67,5 +69,12 @@ public class RegisterController {
 
         registrationService.registeringEmployee(employeeDTO);
         return "redirect:/";
+    }
+
+    @GetMapping("/item")
+    public String registerItem(Model model){
+        model.addAttribute("item", new ItemDTO());
+        model.addAttribute("producers", Producers.values());
+        return "item-registration";
     }
 }
