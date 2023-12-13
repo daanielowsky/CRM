@@ -4,9 +4,11 @@ import com.daanielowsky.crm.DTO.CustomerDTO;
 import com.daanielowsky.crm.DTO.EmployeeDTO;
 import com.daanielowsky.crm.DTO.ItemDTO;
 import com.daanielowsky.crm.Entities.Employee;
+import com.daanielowsky.crm.Entities.Item;
 import com.daanielowsky.crm.Enums.Producers;
 import com.daanielowsky.crm.Enums.Roles;
 import com.daanielowsky.crm.Services.EmployeeService;
+import com.daanielowsky.crm.Services.ItemService;
 import com.daanielowsky.crm.Services.RegistrationService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +26,12 @@ public class RegisterController {
 
     private RegistrationService registrationService;
     private EmployeeService employeeService;
+    private ItemService itemService;
 
-    public RegisterController(RegistrationService registrationService, EmployeeService employeeService) {
+    public RegisterController(RegistrationService registrationService, EmployeeService employeeService, ItemService itemService) {
         this.registrationService = registrationService;
         this.employeeService = employeeService;
+        this.itemService = itemService;
     }
 
     @GetMapping("/customer")
@@ -76,5 +80,17 @@ public class RegisterController {
         model.addAttribute("item", new ItemDTO());
         model.addAttribute("producers", Producers.values());
         return "item-registration";
+    }
+
+    @PostMapping("/item")
+    public String registeringItem(@Valid @ModelAttribute ItemDTO itemDTO, BindingResult result, Model model){
+        if (result.hasErrors()){
+            model.addAttribute("producers", Producers.values());
+            return "item-registration";
+        }
+
+        itemService.registerItem(itemDTO);
+
+        return "redirect:/items";
     }
 }

@@ -1,7 +1,9 @@
 package com.daanielowsky.crm.DTO;
 
 import com.daanielowsky.crm.Enums.Producers;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -9,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 public class ItemDTO {
 
-    @NotBlank(message = "Uzupełnij producenta!")
+    @NotNull(message = "Uzupełnij producenta!")
     private Producers producer;
 
     @NotBlank(message = "Uzupełnij nazwę produktu!")
@@ -21,9 +23,10 @@ public class ItemDTO {
     @NotBlank(message = "Uzupełnij opis na ofertę!")
     private String descriptionForOffer;
 
-    @NotBlank(message = "Uzupełnij cenę netto!")
+    @NotNull(message = "Uzupełnij cenę netto!")
+    @Digits(integer = 10, fraction = 2)
     private BigDecimal price;
 
-    @NotBlank(message = "Uzupełnij ilość na stanie!")
+    @NotNull(message = "Uzupełnij ilość na stanie!")
     private Long quantityOnStock;
 }
