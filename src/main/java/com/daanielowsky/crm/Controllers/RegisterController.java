@@ -43,7 +43,7 @@ public class RegisterController {
 
     @PostMapping("/customer")
     public String registeringCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult result) throws IllegalAccessException{
-        log.info(customerDTO.toString());
+//        log.info(customerDTO.toString());
         if (result.hasErrors()){
             log.warn("There are " + result.getErrorCount() + " errors in registration form. Forwarding back to registration form.");
             return "customer-registration";

@@ -1,7 +1,9 @@
 package com.daanielowsky.crm.Services;
 
 import com.daanielowsky.crm.DTO.CustomerDTO;
+import com.daanielowsky.crm.Entities.Activity;
 import com.daanielowsky.crm.Entities.Customer;
+import com.daanielowsky.crm.Repositories.ActivityRepository;
 import com.daanielowsky.crm.Repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +19,11 @@ public class CustomerService {
 
     private CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    private ActivityRepository activityRepository;
+
+    public CustomerService(CustomerRepository customerRepository, ActivityRepository activityRepository) {
         this.customerRepository = customerRepository;
+        this.activityRepository = activityRepository;
     }
 
     public List<Customer> getAllCustomersAsList(){
@@ -42,6 +47,10 @@ public class CustomerService {
 
         for (Field sFields : sourceFields){
             sFields.setAccessible(true);
+            Object o = sFields.get(source);
+            if(o == null){
+                continue;
+            }
             for (Field d : destinationFields){
                 if(sFields.getName().equals(d.getName()) && sFields.getType().equals(d.getType())){
                     d.setAccessible(true);
@@ -56,6 +65,22 @@ public class CustomerService {
     public void deleteCustomer(Long id){
         Optional<Customer> customerById = customerRepository.getCustomerById(id);
         Customer customer = customerById.orElse(null);
+        List<Activity> activities = customer.getActivities();
+        activities.stream().forEach(activity -> activityRepository.delete(activity));
         customerRepository.delete(customer);
+    }
+
+    public void editingCustomer(Customer customer) {
+        Optional<Customer> customerById = customerRepository.getCustomerById(customer.getId());
+        Customer customer1 = customerById.orElse(null);
+        customer1.setName(customer.getName());
+        customer1.setSurname(customer.getSurname());
+        customer1.setEmail(customer.getEmail());
+        customer1.setPhoneNumber(customer.getPhoneNumber());
+        customer1.setNote(customer.getNote());
+        customer1.setPostCode(customer.getPostCode());
+        customer1.setCity(customer.getCity());
+        log.info("Success of editing customer.");
+        customerRepository.save(customer1);
     }
 }

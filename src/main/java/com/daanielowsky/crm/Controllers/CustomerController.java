@@ -38,24 +38,20 @@ public class CustomerController {
 
     @GetMapping("/edit/{id}")
     public String editCustomer(@PathVariable Long id, Model model) throws IllegalAccessException{
-        ModelMapper modelMapper = new ModelMapper();
-        CustomerDTO customerDTO = modelMapper.map(customerRepository.getCustomerById(id), CustomerDTO.class);
-
-        model.addAttribute("customer", customerDTO);
+        Optional<Customer> customerById = customerRepository.getCustomerById(id);
+        Customer customer = customerById.orElse(null);
+        model.addAttribute("customer", customer);
         return "customer-edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String editingCustomer(@PathVariable Long id, @ModelAttribute ("customer") CustomerDTO customer, BindingResult result) throws IllegalAccessException{
+    public String editingCustomer(@PathVariable Long id, @ModelAttribute ("customer") Customer customer, BindingResult result) throws IllegalAccessException{
         if (result.hasErrors()){
             log.warn("There are " + result.getErrorCount() + " errors in registration form. Forwarding back to edit panel.");
             return "customer-edit";
 //            TODO dodać walidacje
         }
-
-        Customer customer1 = customerService.dataTransferFromDTOToEntity(customer, id);
-        customerRepository.save(customer1);
-
+        customerService.editingCustomer(customer);
         return "redirect:/customers";
     }
 
