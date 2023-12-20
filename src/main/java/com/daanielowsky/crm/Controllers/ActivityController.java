@@ -44,11 +44,8 @@ public class ActivityController {
     @PostMapping("/add/{id}")
     public String creatingActivity(@PathVariable Long id, @ModelAttribute ("activity") Activity activity){
 
-        Optional<Customer> customerById = customerRepository.getCustomerById(id);
-        Customer customer = customerById.orElse(null);
-        activityService.createActivity(customer, activity);
+        activityService.createActivity(id, activity);
 
-        //TODO zrobić to ładniej oraz żeby działało :)
 
         return "redirect:/customers";
     }

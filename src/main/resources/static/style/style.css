@@ -4,7 +4,9 @@
 
 .nav-bar{
     width: fit-content;
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
+    /*justify-content: flex-start;*/
     padding: 16px 32px;
     box-shadow: 0px 10px 14px -7px #276873;
     background:linear-gradient(to top, grey 5%, darkgrey 100%);
@@ -16,7 +18,7 @@
     border-width: 2px;
     border-color: black;
     border-style: solid;
-    margin-inline: 10px;
+    margin: 10px;
     text-decoration: none;
 
 }
@@ -29,6 +31,11 @@
 .nav-bar:active{
     position: relative;
     top:1px;
+}
+
+.nav-div{
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .myButton {
@@ -63,7 +70,7 @@ body{
     background-image: url(../images/background.png);
     background-size: cover;
     background-repeat: no-repeat;
-
+    background-attachment: fixed;
 }
 
 

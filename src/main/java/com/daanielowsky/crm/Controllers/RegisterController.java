@@ -3,6 +3,7 @@ package com.daanielowsky.crm.Controllers;
 import com.daanielowsky.crm.DTO.CustomerDTO;
 import com.daanielowsky.crm.DTO.EmployeeDTO;
 import com.daanielowsky.crm.DTO.ItemDTO;
+import com.daanielowsky.crm.DTO.OfferDTO;
 import com.daanielowsky.crm.Entities.Employee;
 import com.daanielowsky.crm.Entities.Item;
 import com.daanielowsky.crm.Enums.Producers;
@@ -42,10 +43,10 @@ public class RegisterController {
     }
 
     @PostMapping("/customer")
-    public String registeringCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult result) throws IllegalAccessException{
-//        log.info(customerDTO.toString());
+    public String registeringCustomer(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult result, Model model) throws IllegalAccessException{
         if (result.hasErrors()){
             log.warn("There are " + result.getErrorCount() + " errors in registration form. Forwarding back to registration form.");
+            model.addAttribute("employees", employeeService.getSalesRepresentativeForCustomerRegistration());
             return "customer-registration";
         }
 
@@ -92,5 +93,12 @@ public class RegisterController {
         itemService.registerItem(itemDTO);
 
         return "redirect:/items";
+    }
+
+    @GetMapping("/offer")
+    public String registerOffer(Model model){
+        model.addAttribute("offer", new OfferDTO());
+        model.addAttribute("items", itemService.getListOfItems());
+        return "offer-registration";
     }
 }

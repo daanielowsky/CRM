@@ -25,4 +25,8 @@ public class Item {
     private BigDecimal price;
 
     private Long quantityOnStock;
+
+    @ManyToOne
+    @JoinColumn(name = "offer_id")
+    private Offer offer;
 }

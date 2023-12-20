@@ -36,7 +36,7 @@ public class CustomerDTO {
 
     private String note;
 
-//    @NotNull
+    @NotNull
     private Employee employee;
 
 }

@@ -40,7 +40,7 @@ public class RegistrationService {
 
         Activity activity = new Activity();
         activity.setMessage("Customer has been created.");
-        activityService.createActivity(customer, activity);
+        activityService.createActivity(customer.getId(), activity);
 
 //        log.info("Created new customer with ID: " + customer.getId() +
 //                "\nImię: " + customer.getName() +
